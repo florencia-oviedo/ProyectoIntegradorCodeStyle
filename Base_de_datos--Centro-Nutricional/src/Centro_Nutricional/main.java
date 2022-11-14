@@ -3,11 +3,11 @@ package Centro_Nutricional;
 import java.util.Scanner;
 
 public class main {
-    
-static Scanner entrada = new Scanner(System.in);
+
+    static Scanner entrada = new Scanner(System.in);
+
     public static void main(String[] args) {
 
-        
         int i, j, opcion;
         boolean bandera = false;
         String datos_pac[][] = new String[100][100];
@@ -45,7 +45,7 @@ static Scanner entrada = new Scanner(System.in);
                     } else {
                         id++;
                         fila = fila;
-                        IngresarDatos( datos_pac,fila, id);
+                        IngresarDatos(datos_pac, fila, id);
                         bandera = false;
                         break;
                     }
@@ -61,7 +61,8 @@ static Scanner entrada = new Scanner(System.in);
                 case 4: //buscarPaciente(Datos_pac, fila);
                     break;
 
-                case 5: //mostrarPacientes(Datos_pac, fila);
+                case 5:
+                    mostrarPacientes(datos_pac, fila);
                     break;
 
                 case 10:
@@ -86,36 +87,77 @@ static Scanner entrada = new Scanner(System.in);
     }
 
     public static void IngresarDatos(String pacientes[][], int fila, int id) {
-          System.out.println( "***************************************************   Nuevo Paciente  ***************************************************");
-          System.out.println();
-          System.out.println("Ingresar Nombre y Apellido del paciente:  " );
-          String nombre = entrada.nextLine();
-          System.out.println("Ingrese la Altura en Metros: ");
-          double altura = Double.parseDouble(entrada.nextLine());
-          System.out.println("Ingrese el Peso en Kilogramos");
-          double peso = Double.parseDouble(entrada.nextLine());
-          double imc = peso / (altura * altura);
-          String resultadoImc = Double.toString(imc);
-          String altura1 = Double.toString(altura);
-          String peso1 = Double.toString(peso);
-          String id1 = Integer.toString(id);
-          
-          
+        System.out.println("***************************************************   Nuevo Paciente  ***************************************************");
+        System.out.println();
+        System.out.println("Ingresar Nombre y Apellido del paciente:  ");
+        String nombre = entrada.nextLine();
+        System.out.println("Ingrese la Altura en Metros: ");
+        double altura = Double.parseDouble(entrada.nextLine());
+        System.out.println("Ingrese el Peso en Kilogramos");
+        double peso = Double.parseDouble(entrada.nextLine());
+        double imc = peso / (altura * altura);
+        String resultadoImc = Double.toString(imc);
+        String altura1 = Double.toString(altura);
+        String peso1 = Double.toString(peso);
+        String id1 = Integer.toString(id);
+
         pacientes[fila][0] = nombre;
-	pacientes[fila][1] = altura1;
-	pacientes[fila][2] = peso1;
-	pacientes[fila][3] = resultadoImc;
-	pacientes[fila][4] = id1;
-	pacientes[fila][5] = "s";  
-	//mostrarPacientes(pacientes, fila); 
-        for (int i = 0; i <= 4; i++){
-            System.out.println();
-            for (int j = 0; j <= 4; j++){
-                System.out.print(' ' + pacientes [i][j]);
-              
+        pacientes[fila][1] = altura1;
+        pacientes[fila][2] = peso1;
+        pacientes[fila][3] = resultadoImc;
+        pacientes[fila][4] = id1;
+        pacientes[fila][5] = "s";
+        mostrarPacientes(pacientes, fila);
+
+    }
+
+    //Listar pacientes
+    public static void mostrarPacientes(String pacientes[][], int fila) {
+        int i, j;
+        System.out.println("***************************************************  PACIENTES  ***************************************************");
+        for (i = 0; i <= fila; i++) {
+            mostrarPaciente(pacientes, i);
+            System.out.println("");
         }
+        System.out.println("");
+
+    }
+
+    //Listar pacientes 
+    public static void mostrarPaciente(String pacientes[][], int i) {
+        int espacios, j, k;
+
+        {
+            espacios = 0;// Se inicializa la variable para luego hacer el calculo de espacios a completar
+            for (j = 0; j <= 4; j++) {
+                if ((pacientes[i][5].equals("s"))) {// Si el paciente esta activo ("s") entonces hacer...
+                    if ((pacientes[i][j].length() % 2 == 0)) {// Calcula si la longitud del campo es par
+                        espacios = 30 - pacientes[i][j].length();// calcula un espacio total de 30 menos la longitud del campo
+                        for (k = 0; k <= Math.floor((espacios - 1) / 2); k++) {// Utilizamos la palabra reservada trunc que devuelve la parte entera de ese valor k
+                            System.out.print(" ");
+                        }
+                        // 1 - imprimir el campo de pacientes
+                        System.out.print(pacientes[i][j]);
+                        for (k = 0; k <= Math.floor((espacios - 1) / 2); k++) {
+                            System.out.print(" ");
+                        }
+                        System.out.print(" |");
+                        // si es impar la longitud del campo...
+                    } else {
+                        // calcula un espacio total de 30 menos la longitud del campo
+                        espacios = 30 - pacientes[i][j].length();
+                        for (k = 0; k <= Math.floor((espacios - 1) / 2); k++) {
+                            System.out.print(" ");
+                        }
+                        // imprimir el campo de pacientes
+                        System.out.print(pacientes[i][j]);
+                        for (k = 0; k <= Math.floor((espacios - 1) / 2); k++) {
+                            System.out.print(" ");
+                        }
+                        System.out.print("|");
+                    }
+                }
             }
-        
-        
+        }
     }
 }
