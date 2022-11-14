@@ -8,7 +8,7 @@ public class main {
 
     public static void main(String[] args) {
 
-        int i, j, opcion;
+        int i, j, opcion;           
         boolean bandera = false;
         String datos_pac[][] = new String[100][100];
         int fila = 0;
@@ -77,6 +77,7 @@ public class main {
                     System.out.println("6: Ivana Germir");
                     System.out.println("7: Martin Verstraeten");
                     System.out.println("8: Fernando Rojas");
+                    System.out.println();
                     break;
                 default:
                     System.out.println("La opción es incorrecta. Digite nuevamente");
@@ -95,7 +96,7 @@ public class main {
         double altura = Double.parseDouble(entrada.nextLine());
         System.out.println("Ingrese el Peso en Kilogramos");
         double peso = Double.parseDouble(entrada.nextLine());
-        double imc = peso / (altura * altura);
+        double imc = Math.round( imc(altura,peso));
         String resultadoImc = Double.toString(imc);
         String altura1 = Double.toString(altura);
         String peso1 = Double.toString(peso);
@@ -110,6 +111,12 @@ public class main {
         mostrarPacientes(pacientes, fila);
 
     }
+    
+    // Calcular IMC
+    public static double imc(double altura, double peso) {
+		double calculo = peso/(altura*altura);
+		return calculo;
+	}
 
     //Listar pacientes
     public static void mostrarPacientes(String pacientes[][], int fila) {
