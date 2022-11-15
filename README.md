@@ -18,6 +18,8 @@ Vas a poder  :point_down:
  
 * :x: Eliminar datos de paciente
 
+* :page_with_curl: Listado de pacientes
+
 * :cook: Realizar búsqueda de paciente
 
 * 	:chart_with_downwards_trend: También te muestra el índice de masa corporal de cada paciente
