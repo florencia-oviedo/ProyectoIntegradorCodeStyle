@@ -6,7 +6,7 @@
 
 ## Descripición:
 
-El proyecto  es una  base de datos para un centro nutricional que registrara los datos de sus pacientes
+El proyecto  es una  base de datos para un centro nutricional que registro y gestion de datos de sus pacientes
 
 ### Funcionalidades
 
