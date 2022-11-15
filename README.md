@@ -18,7 +18,7 @@ Vas a poder  :point_down:
  
 * :x: Eliminar datos de paciente
 
-* :page_with_curl: Listado de pacientes
+* :page_with_curl: Visualizar el listado de pacientes
 
 * :cook: Realizar búsqueda de paciente
 
