@@ -6,28 +6,28 @@
 
 ## Descripición:
 
-El proyecto  es una  base de datos para un centro nutricional que registro y gestion de datos de sus pacientes
+El proyecto  es una  base de datos para un centro nutricional que registra y gestiona los datos de sus pacientes.
 
 ### Funcionalidades
 
-vas a poder  :point_down:
+Vas a poder  :point_down:
 
-*  :people_holding_hands: ingresar datos de paciente
+*  :people_holding_hands: Ingresar datos de paciente
 
-*  :pencil2: editar datos de paciente
+*  :pencil2: Editar datos de paciente
  
-* :x: eliminar datos de paciente
+* :x: Eliminar datos de paciente
 
-* :cook: realizar busqueda de paciente
+* :cook: Realizar búsqueda de paciente
 
-* 	:chart_with_downwards_trend: tambien te muestra el indice de maza corporal de cada paciente
+* 	:chart_with_downwards_trend: También te muestra el índice de masa corporal de cada paciente
 
 
 ### Desarrollo
 
-* para realizar el programa se utilizo lenguaje java :hotsprings: 
+* Para realizar el programa se utilizó el lenguaje Java :hotsprings: 
 
-* el programa se ejecuta en consola (se utilizo editor NetBeans, JDK 15.0)
+* El programa se ejecuta en consola (se utilizó editor NetBeans, JDK 15.0)
 
 
 ### Colaboradores del proyecto
