@@ -7,8 +7,9 @@ public class main {
     static Scanner entrada = new Scanner(System.in);
 
     public static void main(String[] args) {
+        
 
-        int i, j, opcion;           
+        int opcion;           
         boolean bandera = false;
         String datos_pac[][] = new String[100][100];
         int fila = 0;
@@ -44,7 +45,7 @@ public class main {
                         break;
                     } else {
                         id++;
-                        fila = fila;
+                       
                         IngresarDatos(datos_pac, fila, id);
                         bandera = false;
                         break;
@@ -59,6 +60,7 @@ public class main {
                     break;
 
                 case 4: //buscarPaciente(Datos_pac, fila);
+                    buscarPaciente(datos_pac,fila);
                     break;
 
                 case 5:
@@ -167,4 +169,31 @@ public class main {
             }
         }
     }
+    
+    //buscar pacientes
+    public static void buscarPaciente(String pacientes[][], int fila){
+            int i ;
+            String id;
+            boolean bandera=false;
+            System.out.println("******************************* BUSCAR PACIENTES**********************************");
+            System.out.println("Ingresar id del paciente:  ");
+            id = entrada.nextLine();
+            //id = Integer.parseInt( entrada.nextLine());
+            for ( i = 0; i <= fila; i++) {
+                if (pacientes[i][4].equals(id)) {
+                    mostrarPaciente(pacientes,i);
+                    bandera= true;
+                }
+            
+            }
+            if(!bandera){
+                System.out.println("no se encontro paciente");
+            }
+            System.out.println("");
+            
+    }
+            
+            
+            
+            
 }
