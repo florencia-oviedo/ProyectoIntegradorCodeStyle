@@ -32,8 +32,7 @@ public class main {
         System.out.println("******************************************** BIENVENIDOS A NUTRICION DIGITAL ********************************************");
         System.out.println();
 
-        do
-        {
+        do {
             System.out.println("1: Ingresar nuevo paciente");
             System.out.println("2: Editar paciente");
             System.out.println("3: Eliminar paciente");
@@ -43,19 +42,16 @@ public class main {
             System.out.println("Ingrese su opción: ");
             opcion = Integer.parseInt(entrada.nextLine());
 
-            switch (opcion)
-            {
+            switch (opcion) {
                 case 1: //verificamos si hubo algún paciente eliminado de la base de datos para 
                     //asignar o no un campo nuevo en la memoria a traves de una bandera que nos indica su estado 
                     //y utilizar  para ingresar datos del nuevo paciente
-                    if (bandera == false)
-                    {
+                    if (bandera == false) {
                         id++;
                         fila++;
                         IngresarDatos(datos_pac, fila, id);
                         break;
-                    } else
-                    {
+                    } else {
                         id++;
 
                         IngresarDatos(datos_pac, fila, id);
@@ -69,7 +65,7 @@ public class main {
 
                 case 3: //cambiamos valor de bandera a "verdadero"para indicar al Algoritmo que hubo usuario eliminado en la base de datos
                     bandera = true;
-                    //eliminarPaciente(Datos_pac, fila); 
+                    eliminarPaciente(datos_pac, fila);
                     break;
 
                 case 4: //buscarPaciente(Datos_pac, fila);
@@ -101,6 +97,7 @@ public class main {
         } while (opcion != 10);
 
     }
+
     //Ingreso de nuevo paciente.
     public static void IngresarDatos(String pacientes[][], int fila, int id) {
         System.out.println("***************************************************   Nuevo Paciente  ***************************************************");
@@ -138,8 +135,7 @@ public class main {
     public static void mostrarPacientes(String pacientes[][], int fila) {
         int i, j;
         System.out.println("***************************************************  PACIENTES  ***************************************************");
-        for (i = 0; i <= fila; i++)
-        {
+        for (i = 0; i <= fila; i++) {
             mostrarPaciente(pacientes, i);
             System.out.println("");
         }
@@ -153,37 +149,29 @@ public class main {
 
         {
             espacios = 0;// Se inicializa la variable para luego hacer el calculo de espacios a completar
-            for (j = 0; j <= 4; j++)
-            {
-                if ((pacientes[i][5].equals("s")))
-                {// Si el paciente esta activo ("s") entonces hacer...
-                    if ((pacientes[i][j].length() % 2 == 0))
-                    {// Calcula si la longitud del campo es par
+            for (j = 0; j <= 4; j++) {
+                if ((pacientes[i][5].equals("s"))) {// Si el paciente esta activo ("s") entonces hacer...
+                    if ((pacientes[i][j].length() % 2 == 0)) {// Calcula si la longitud del campo es par
                         espacios = 30 - pacientes[i][j].length();// calcula un espacio total de 30 menos la longitud del campo
-                        for (k = 0; k <= Math.floor((espacios - 1) / 2); k++)
-                        {// Utilizamos la palabra reservada trunc que devuelve la parte entera de ese valor k
+                        for (k = 0; k <= Math.floor((espacios - 1) / 2); k++) {// Utilizamos la palabra reservada trunc que devuelve la parte entera de ese valor k
                             System.out.print(" ");
                         }
                         // 1 - imprimir el campo de pacientes
                         System.out.print(pacientes[i][j]);
-                        for (k = 0; k <= Math.floor((espacios - 1) / 2); k++)
-                        {
+                        for (k = 0; k <= Math.floor((espacios - 1) / 2); k++) {
                             System.out.print(" ");
                         }
                         System.out.print(" |");
                         // si es impar la longitud del campo...
-                    } else
-                    {
+                    } else {
                         // calcula un espacio total de 30 menos la longitud del campo
                         espacios = 30 - pacientes[i][j].length();
-                        for (k = 0; k <= Math.floor((espacios - 1) / 2); k++)
-                        {
+                        for (k = 0; k <= Math.floor((espacios - 1) / 2); k++) {
                             System.out.print(" ");
                         }
                         // imprimir el campo de pacientes
                         System.out.print(pacientes[i][j]);
-                        for (k = 0; k <= Math.floor((espacios - 1) / 2); k++)
-                        {
+                        for (k = 0; k <= Math.floor((espacios - 1) / 2); k++) {
                             System.out.print(" ");
                         }
                         System.out.print("|");
@@ -200,11 +188,9 @@ public class main {
         boolean bandera = false;
         System.out.println("******************************* BUSCAR PACIENTES**********************************");
         System.out.println("Ingresar id del paciente:  ");
-        id = entrada.nextLine();        
-        for (i = 0; i <= fila; i++)
-        {
-            if (pacientes[i][4].equals(id))
-            {
+        id = entrada.nextLine();
+        for (i = 0; i <= fila; i++) {
+            if (pacientes[i][4].equals(id)) {
                 mostrarPaciente(pacientes, i);
                 bandera = true;
             }
@@ -230,12 +216,9 @@ public class main {
         System.out.println("...........................");
         System.out.println("...........................");
 
-        for (i = 1; i <= fila; i++)
-        {
-            if (datos_pac[i][4].equals(id))
-            {
-                do
-                {
+        for (i = 1; i <= fila; i++) {
+            if (datos_pac[i][4].equals(id)) {
+                do {
                     System.out.println("");
                     System.out.println("Seleccione una opción: ");
                     System.out.println("");
@@ -245,8 +228,7 @@ public class main {
                     System.out.println("4. Salir ");
                     opcion = Integer.parseInt(entrada.nextLine());
 
-                    switch (opcion)
-                    {
+                    switch (opcion) {
                         case 1:
                             System.out.println("Ingrese el nuevo nombre: ");
                             datos_pac[i][0] = entrada.nextLine();
@@ -272,15 +254,46 @@ public class main {
                     }
                 } while (opcion != 4);
 
-            }
-            else{
+            } else {
                 System.out.println("El ID ingresado es incorrecto");
                 System.out.println("_____________________________");
-            }           
+            }
 
         }
     }
 
-} 
+    // Eliminar pacientes
+    public static void eliminarPaciente(String pacientes[][], int fila) {
+        int i, j, k;
+        String id;
+        k = 0;
+        System.out.println("******************************* ELIMINAR PACIENTES**********************************");
+        System.out.println("Ingresar id del paciente:  ");
+        id = entrada.nextLine();
+        //verificamos si el ID a eliminar existe de ser asi le asignamos "n"
+        //en una celda de la matriz que nos indica el estado del paciente
+        //n= eliminar paciente s= paciente activo
+        for (i = 0; i <= fila; i++) {
+            if (pacientes[i][4].equals(id)) {
+                pacientes[i][5] = "n";
+            }
+        }
+        //"n" indica paciente a eliminar, al encontrar este dato hacemos que los datos del siguiente paciente
+        //se sobrepongan a los datos del paciente a eliminar para que no queden huecos ni repeticiones en la base de datos
+        //a partir de la fila representada con "k" se reemplazara esa fila con los datos de la siguiente fila hasta el final de la matriz
 
+        for (i = 0; i <= fila; i++) {
+            if (pacientes[i][4].equals(id)) {
+                for (k = i; k <= fila - 1; k++) {
+                    for (j = 0; j <= 5; j++) {
+                        pacientes[k][j] = pacientes[k + 1][j];
+                    }
+                }
+            }
+        }
+        pacientes[k][5] = "n";
+        // contiene datos repetidos por lo tanto se niega para cuando se ingrese un nuevo paciente ocupe este lugar en la memoria
 
+    }
+
+}
