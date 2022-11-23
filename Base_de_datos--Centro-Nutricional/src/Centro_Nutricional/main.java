@@ -1,15 +1,15 @@
 package Centro_Nutricional;
 
 import java.util.Scanner;
-//definiendo variables
-// Datos_pac = nommbre de la matriz a contener datos de los pacientes
-//i: iterador que se usará a lo largo del programa
-//id = identificador único por paciente
-//bandera = operador logico para indicar si hubo  pacientes eliminados de la base de datos
-//la variable "fila" es la que lleva el dato actualizado de la ultima posicion de la matriz
+
 
 public class main {
-
+    //definiendo variables
+    // Datos_pac = nommbre de la matriz a contener datos de los pacientes
+    //i: iterador que se usará a lo largo del programa
+    //id = identificador único por paciente
+    //bandera = operador logico para indicar si hubo  pacientes eliminados de la base de datos
+    //la variable "fila" es la que lleva el dato actualizado de la ultima posicion de la matriz
     static Scanner entrada = new Scanner(System.in);
     private static String id;
     private static int opcion;
@@ -33,13 +33,14 @@ public class main {
         System.out.println();
 
         do {
+	    System.out.println("****MENÚ PRINCIPAL****");
             System.out.println("1: Ingresar nuevo paciente");
             System.out.println("2: Editar paciente");
             System.out.println("3: Eliminar paciente");
             System.out.println("4: Buscar paciente");
             System.out.println("5: Listado de pacientes");
             System.out.println("10: Salir");
-            System.out.println("Ingrese su opción: ");
+            System.out.print("Ingrese su opción: ");
             opcion = Integer.parseInt(entrada.nextLine());
 
             switch (opcion) {
@@ -79,16 +80,11 @@ public class main {
                 case 10:
                     System.out.println();
                     System.out.println("********** Team Developers CodeStyle **********");
-                    System.out.println();
-                    System.out.println("1: Florencia Micaela Oviedo ");
-                    System.out.println("2: Dana Angellotti");
-                    System.out.println("3: Maria Gabriela Silva");
-                    System.out.println("4: Adriana Soledad Da Silva");
-                    System.out.println("5: Juan Pablo Ayoroa Portugal");
-                    System.out.println("6: Ivana Germir");
-                    System.out.println("7: Martin Verstraeten");
-                    System.out.println("8: Fernando Rojas");
-                    System.out.println();
+                    String [] CodeStyle = {"Florencia Oviedo","Dana Angellotti","Maria Gabriela Silva","Adriana Soledad Da Silva",
+                    "Juan Pablo Ayoroa Portugal", "Ivana Germir", "Martin Verstraeten","Fernando Rojas"};
+                    for(int c=0; c<CodeStyle.length; c++) {
+			System.out.println((c+1) +": "+ CodeStyle[c]);
+                    }
                     break;
                 default:
                     System.out.println("La opción es incorrecta. Digite nuevamente");
@@ -100,13 +96,14 @@ public class main {
 
     //Ingreso de nuevo paciente.
     public static void IngresarDatos(String pacientes[][], int fila, int id) {
+        limpiarPantalla();
         System.out.println("***************************************************   Nuevo Paciente  ***************************************************");
         System.out.println();
-        System.out.println("Ingresar Nombre y Apellido del paciente:  ");
+        System.out.print("Ingresar Nombre y Apellido del paciente:  ");
         String nombre = entrada.nextLine();
-        System.out.println("Ingrese la Altura en Metros: ");
+        System.out.print("Ingrese la Altura en Metros: ");
         double altura = Double.parseDouble(entrada.nextLine());
-        System.out.println("Ingrese el Peso en Kilogramos");
+        System.out.print("Ingrese el Peso en Kilogramos: ");
         double peso = Double.parseDouble(entrada.nextLine());
         double imc = Math.round(imc(altura, peso));
         String resultadoImc = Double.toString(imc);
@@ -133,6 +130,7 @@ public class main {
 
     //Listar pacientes
     public static void mostrarPacientes(String pacientes[][], int fila) {
+        limpiarPantalla();
         int i, j;
         System.out.println("***************************************************  PACIENTES  ***************************************************");
         for (i = 0; i <= fila; i++) {
@@ -183,11 +181,12 @@ public class main {
 
     //buscar pacientes
     public static void buscarPaciente(String pacientes[][], int fila) {
+        limpiarPantalla();
         int i;
         String id;
         boolean bandera = false;
         System.out.println("******************************* BUSCAR PACIENTES**********************************");
-        System.out.println("Ingresar id del paciente:  ");
+        System.out.print("Ingresar id del paciente:  ");
         id = entrada.nextLine();
         for (i = 0; i <= fila; i++) {
             if (pacientes[i][4].equals(id)) {
@@ -198,7 +197,7 @@ public class main {
         }
         if (!bandera)// Evalua si bandera es falso
         {
-            System.out.println("no se encontro paciente");// Muestra mensaje que no se encontro el paciente
+            System.out.println("no se encontró paciente");// Muestra mensaje que no se encontro el paciente
         }
         System.out.println("");
 
@@ -208,10 +207,10 @@ public class main {
     public static void editarPaciente(String datos_pac[][], int fila) {
         int i;
         String id;
-
+        limpiarPantalla();
         System.out.println("************************************************** EDITAR PACIENTES *****************************************");
         Scanner entrada = new Scanner(System.in);
-        System.out.println("Digite el ID del paciente a editar: ");
+        System.out.print("Digite el ID del paciente a editar: ");
         id = entrada.nextLine();
         System.out.println("...........................");
         System.out.println("...........................");
@@ -220,30 +219,29 @@ public class main {
             if (datos_pac[i][4].equals(id)) {
                 do {
                     System.out.println("");
-                    System.out.println("Seleccione una opción: ");
-                    System.out.println("");
                     System.out.println("1. Editar Nombre y Apellido: ");
                     System.out.println("2. Editar Altura en metros:  ");
                     System.out.println("3. Editar peso en kilogramos: ");
                     System.out.println("4. Salir ");
+                    System.out.print("Seleccione una opción: ");
                     opcion = Integer.parseInt(entrada.nextLine());
 
                     switch (opcion) {
                         case 1:
-                            System.out.println("Ingrese el nuevo nombre: ");
+                            System.out.print("Ingrese el nuevo nombre: ");
                             datos_pac[i][0] = entrada.nextLine();
                             break;
                         case 2:
-                            System.out.println("Ingrese la nueva altura: ");
+                            System.out.print("Ingrese la nueva altura: ");
                             datos_pac[i][1] = (entrada.nextLine());
                             Double resultado_imc = imc(Double.parseDouble(datos_pac[i][1]), Double.parseDouble(datos_pac[i][2]));
-                            datos_pac[i][3] = Double.toString(resultado_imc);
+                            datos_pac[i][3] = Double.toString(Math.round(resultado_imc));
                             break;
                         case 3:
-                            System.out.println("Ingrese el nuevo peso: ");
+                            System.out.print("Ingrese el nuevo peso: ");
                             datos_pac[i][2] = (entrada.nextLine());
                             Double resultado_imc2 = imc(Double.parseDouble(datos_pac[i][1]), Double.parseDouble(datos_pac[i][2]));
-                            datos_pac[i][3] = Double.toString(resultado_imc2);
+                            datos_pac[i][3] = Double.toString(Math.round(resultado_imc2));
                             break;
                         case 4:
                             break;
@@ -264,11 +262,12 @@ public class main {
 
     // Eliminar pacientes
     public static void eliminarPaciente(String pacientes[][], int fila) {
+        limpiarPantalla();
         int i, j, k;
         String id;
         k = 0;
         System.out.println("******************************* ELIMINAR PACIENTES**********************************");
-        System.out.println("Ingresar id del paciente:  ");
+        System.out.print("Ingresar id del paciente:  ");
         id = entrada.nextLine();
         //verificamos si el ID a eliminar existe de ser asi le asignamos "n"
         //en una celda de la matriz que nos indica el estado del paciente
@@ -295,5 +294,12 @@ public class main {
         // contiene datos repetidos por lo tanto se niega para cuando se ingrese un nuevo paciente ocupe este lugar en la memoria
 
     }
+    
+    //limpiar pantalla
+    public static void limpiarPantalla(){
+	 for (int i=0; i < 20; i++){
+             System.out.println();
+	 }
+	}
 
 }
