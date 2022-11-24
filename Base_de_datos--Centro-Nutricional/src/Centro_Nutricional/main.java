@@ -96,7 +96,6 @@ public class main {
 
     //Ingreso de nuevo paciente.
     public static void IngresarDatos(String pacientes[][], int fila, int id) {
-        limpiarPantalla();
         System.out.println("***************************************************   Nuevo Paciente  ***************************************************");
         System.out.println();
         System.out.print("Ingresar Nombre y Apellido del paciente:  ");
@@ -130,7 +129,6 @@ public class main {
 
     //Listar pacientes
     public static void mostrarPacientes(String pacientes[][], int fila) {
-        limpiarPantalla();
         int i, j;
         System.out.println("***************************************************  PACIENTES  ***************************************************");
         for (i = 0; i <= fila; i++) {
@@ -181,7 +179,6 @@ public class main {
 
     //buscar pacientes
     public static void buscarPaciente(String pacientes[][], int fila) {
-        limpiarPantalla();
         int i;
         String id;
         boolean bandera = false;
@@ -207,7 +204,7 @@ public class main {
     public static void editarPaciente(String datos_pac[][], int fila) {
         int i;
         String id;
-        limpiarPantalla();
+        
         System.out.println("************************************************** EDITAR PACIENTES *****************************************");
         Scanner entrada = new Scanner(System.in);
         System.out.print("Digite el ID del paciente a editar: ");
@@ -262,8 +259,8 @@ public class main {
 
     // Eliminar pacientes
     public static void eliminarPaciente(String pacientes[][], int fila) {
-        limpiarPantalla();
         int i, j, k;
+        boolean existe = false;
         String id;
         k = 0;
         System.out.println("******************************* ELIMINAR PACIENTES**********************************");
@@ -275,8 +272,12 @@ public class main {
         for (i = 0; i <= fila; i++) {
             if (pacientes[i][4].equals(id)) {
                 pacientes[i][5] = "n";
-            }
+                existe = true;
+                break;
+                
+            }   
         }
+        
         //"n" indica paciente a eliminar, al encontrar este dato hacemos que los datos del siguiente paciente
         //se sobrepongan a los datos del paciente a eliminar para que no queden huecos ni repeticiones en la base de datos
         //a partir de la fila representada con "k" se reemplazara esa fila con los datos de la siguiente fila hasta el final de la matriz
@@ -286,20 +287,23 @@ public class main {
                 for (k = i; k <= fila - 1; k++) {
                     for (j = 0; j <= 5; j++) {
                         pacientes[k][j] = pacientes[k + 1][j];
+                        
                     }
                 }
             }
+            
         }
+        
+        if(existe){
+            System.out.println("Paciente eliminado con éxito");
+        }
+        else{
+            System.out.println("El id ingresado no existe, intentalo nuevamente");
+        }
+        
         pacientes[k][5] = "n";
         // contiene datos repetidos por lo tanto se niega para cuando se ingrese un nuevo paciente ocupe este lugar en la memoria
 
     }
     
-    //limpiar pantalla
-    public static void limpiarPantalla(){
-	 for (int i=0; i < 20; i++){
-             System.out.println();
-	 }
-	}
-
 }
