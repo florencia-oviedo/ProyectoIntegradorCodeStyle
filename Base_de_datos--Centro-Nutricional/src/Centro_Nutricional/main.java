@@ -29,11 +29,11 @@ public class main {
         datos_pac[0][4] = "ID";
         datos_pac[0][5] = "s";// S indica que el paciente esta  activo caso contrario se denota con una "n"
 
-        System.out.println("******************************************** BIENVENIDOS A NUTRICION DIGITAL ********************************************");
+        System.out.println("**************************************************************** BIENVENIDOS A NUTRICION DIGITAL ****************************************************************");
         System.out.println();
 
         do {
-	    System.out.println("****MENÚ PRINCIPAL****");
+	    System.out.println("******MENÚ PRINCIPAL******");
             System.out.println("1: Ingresar nuevo paciente");
             System.out.println("2: Editar paciente");
             System.out.println("3: Eliminar paciente");
@@ -79,7 +79,7 @@ public class main {
 
                 case 10:
                     System.out.println();
-                    System.out.println("********** Team Developers CodeStyle **********");
+                    System.out.println("******************************************************************* Team Developers CodeStyle *******************************************************************");
                     String [] CodeStyle = {"Florencia Oviedo","Dana Angellotti","Maria Gabriela Silva","Adriana Soledad Da Silva",
                     "Juan Pablo Ayoroa Portugal", "Ivana Germir", "Martin Verstraeten","Fernando Rojas"};
                     for(int c=0; c<CodeStyle.length; c++) {
@@ -88,7 +88,7 @@ public class main {
                     break;
                 default:
                     System.out.println("La opción es incorrecta. Digite nuevamente");
-
+                    System.out.println("");
             }
         } while (opcion != 10);
 
@@ -96,7 +96,7 @@ public class main {
 
     //Ingreso de nuevo paciente.
     public static void IngresarDatos(String pacientes[][], int fila, int id) {
-        System.out.println("***************************************************   Nuevo Paciente  ***************************************************");
+        System.out.println("************************************************************************ NUEVO PACIENTE *************************************************************************");
         System.out.println();
         System.out.print("Ingresar Nombre y Apellido del paciente:  ");
         String nombre = entrada.nextLine();
@@ -117,7 +117,7 @@ public class main {
         pacientes[fila][4] = id1;
         pacientes[fila][5] = "s";// inicializa como paciente activo para listarlo en las busquedas
         mostrarPacientes(pacientes, fila);// Muestra los pacientes luego de ingresarlo
-
+        System.out.println("");
     }
 
     // Calcular IMC
@@ -130,7 +130,7 @@ public class main {
     //Listar pacientes
     public static void mostrarPacientes(String pacientes[][], int fila) {
         int i, j;
-        System.out.println("***************************************************  PACIENTES  ***************************************************");
+        System.out.println("*************************************************************************** PACIENTES ***************************************************************************");
         for (i = 0; i <= fila; i++) {
             mostrarPaciente(pacientes, i);
             System.out.println("");
@@ -182,19 +182,20 @@ public class main {
         int i;
         String id;
         boolean bandera = false;
-        System.out.println("******************************* BUSCAR PACIENTES**********************************");
+        System.out.println("*********************************************************************** BUSCAR PACIENTES ************************************************************************");
         System.out.print("Ingresar id del paciente:  ");
         id = entrada.nextLine();
         for (i = 0; i <= fila; i++) {
             if (pacientes[i][4].equals(id)) {
                 mostrarPaciente(pacientes, i);
+                System.out.println("");
                 bandera = true;
             }
 
         }
         if (!bandera)// Evalua si bandera es falso
         {
-            System.out.println("no se encontró paciente");// Muestra mensaje que no se encontro el paciente
+            System.out.println("No se encontró paciente");// Muestra mensaje que no se encontro el paciente
         }
         System.out.println("");
 
@@ -206,19 +207,18 @@ public class main {
         String id;
         boolean existe = false;
         
-        System.out.println("************************************************** EDITAR PACIENTES *****************************************");
+        System.out.println("*********************************************************************** EDITAR PACIENTES ************************************************************************");
         Scanner entrada = new Scanner(System.in);
         System.out.print("Digite el ID del paciente a editar: ");
         id = entrada.nextLine();
-        System.out.println("...........................");
-        System.out.println("...........................");
+        System.out.println("");
 
         for (i = 1; i <= fila; i++) {
             if (datos_pac[i][4].equals(id)) {
                 existe = true;
                 do {
                     System.out.println("");
-                    System.out.println("***MENÚ EDITAR***");
+                    System.out.println("**********MENÚ EDITAR**********");
                     System.out.println("1. Editar Nombre y Apellido: ");
                     System.out.println("2. Editar Altura en metros:  ");
                     System.out.println("3. Editar peso en kilogramos: ");
@@ -244,6 +244,7 @@ public class main {
                             datos_pac[i][3] = Double.toString(Math.round(resultado_imc2));
                             break;
                         case 4:
+                            System.out.println("");
                             break;
 
                         default:
@@ -257,7 +258,7 @@ public class main {
         }
         if(existe == false){
             System.out.println("El ID ingresado es incorrecto");
-            System.out.println("_____________________________");
+            System.out.println("");
         }
     }
 
@@ -267,7 +268,7 @@ public class main {
         boolean existe = false;
         String id;
         k = 0;
-        System.out.println("******************************* ELIMINAR PACIENTES**********************************");
+        System.out.println("********************************************************************** ELIMINAR PACIENTES ***********************************************************************");
         System.out.print("Ingresar id del paciente:  ");
         id = entrada.nextLine();
         //verificamos si el ID a eliminar existe de ser asi le asignamos "n"
@@ -300,9 +301,11 @@ public class main {
         
         if(existe){
             System.out.println("Paciente eliminado con éxito");
+            System.out.println("");
         }
         else{
             System.out.println("El id ingresado no existe, intentalo nuevamente");
+            System.out.println("");
         }
         
         pacientes[k][5] = "n";
