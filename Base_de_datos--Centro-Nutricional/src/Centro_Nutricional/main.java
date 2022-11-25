@@ -204,6 +204,7 @@ public class main {
     public static void editarPaciente(String datos_pac[][], int fila) {
         int i;
         String id;
+        boolean existe = false;
         
         System.out.println("************************************************** EDITAR PACIENTES *****************************************");
         Scanner entrada = new Scanner(System.in);
@@ -214,8 +215,10 @@ public class main {
 
         for (i = 1; i <= fila; i++) {
             if (datos_pac[i][4].equals(id)) {
+                existe = true;
                 do {
                     System.out.println("");
+                    System.out.println("***MENÚ EDITAR***");
                     System.out.println("1. Editar Nombre y Apellido: ");
                     System.out.println("2. Editar Altura en metros:  ");
                     System.out.println("3. Editar peso en kilogramos: ");
@@ -249,11 +252,12 @@ public class main {
                     }
                 } while (opcion != 4);
 
-            } else {
-                System.out.println("El ID ingresado es incorrecto");
-                System.out.println("_____________________________");
-            }
+            } 
 
+        }
+        if(existe == false){
+            System.out.println("El ID ingresado es incorrecto");
+            System.out.println("_____________________________");
         }
     }
 
