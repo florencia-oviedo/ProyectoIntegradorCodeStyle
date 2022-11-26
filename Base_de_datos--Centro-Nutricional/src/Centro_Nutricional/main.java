@@ -205,7 +205,7 @@ public class main {
     public static void editarPaciente(String datos_pac[][], int fila) {
         int i;
         String id;
-        boolean existe = false;
+        boolean existe = false; //Creamos un boolean para saber si existe el ID o no.
         
         System.out.println("*********************************************************************** EDITAR PACIENTES ************************************************************************");
         Scanner entrada = new Scanner(System.in);
@@ -265,7 +265,7 @@ public class main {
     // Eliminar pacientes
     public static void eliminarPaciente(String pacientes[][], int fila) {
         int i, j, k;
-        boolean existe = false;
+        boolean existe = false; //Creamos un boolean para saber si el ID existe o no.
         String id;
         k = 0;
         System.out.println("********************************************************************** ELIMINAR PACIENTES ***********************************************************************");
