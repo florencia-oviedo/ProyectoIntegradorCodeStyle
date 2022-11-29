@@ -1,8 +1,11 @@
 <h1 align= "center" >Proyecto integrador Centro nutricional CodeStyle</h1>
+
 <p align="center">
-  <img width="120"  src=https://github.com/CodeSystem2022/AsistenciaCodeStyle/blob/main/assets/logo_codeStyle.jpeg>
+  <img width="150"  src=https://github.com/CodeSystem2022/AsistenciaCodeStyle/blob/main/assets/CodeStyleTransparent.png>
+  2022
 </p>
 
+----
 
 ## Descripición:
 
